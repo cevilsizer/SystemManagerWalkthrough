@@ -1,0 +1,12 @@
+zs3:cevilsiz-powershelldsc:webserver.mof
+cevilsiz-powershelldsc-logs
+cevilsiz-powershelldsc-report
+cevilsiz-ssm-logs
+statemanager/dsc/webserver
+s3://cevlsiz-ssm-logs/statemanager/dsc/webserver
+cp .\MyDscConfiguration\localhost.mof .\MyDscConfiguration\webserver.mof
+aws s3 cp .\MyDscConfiguration\webserver.mof s3://cevilsiz-powershelldsc/webserver.mof
+
+aws s3api list-objects --bucket cevilsiz-ssm-logs --query "Contents[?contains(Key, 'i-025c8b6c8a4103b9d')]"
+
+aws s3api get-object --bucket cevilsiz-ssm-logs --key statemanager/powershelldsc/webserver/df29c3ba-7c52-47e2-a746-571e247648f0/i-025c8b6c8a4103b9d/awsrunPowerShellScript/RunPowerShell/stdout file.txt
