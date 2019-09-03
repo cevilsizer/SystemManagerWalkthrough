@@ -174,3 +174,8 @@ S3 key prefix: statemanager/powershelldsc/webserver
 Key: Role 
 Value: App2-WebServer
 
+<powershell>
+Set-DefaultAWSRegion -Region us-west-1
+Set-Variable -name instance_id -value (Invoke-Restmethod -uri http://169.254.169.254/latest/meta-data/instance-id)
+New-SSMAssociation -InstanceId $instance_id -Name "awsconfig_Domain_d-9167326190_SSMDemo.com"
+</powershell>
